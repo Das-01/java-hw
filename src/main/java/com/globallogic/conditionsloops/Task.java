@@ -1,4 +1,5 @@
 package com.globallogic.conditionsloops;
+import java.util.Arrays;
 
 public class Task {
 
@@ -12,7 +13,17 @@ public class Task {
         Print Initial for elementary level (grade from 1 to 3), Average for average level (grade from 4 to 6), Sufficient for sufficient level (grade from 7 to 9) and High for high level (grade from 10 to 12).
     */
     public String levelEducationAchievements(int grade) {
-        return null;
+        String result = "";
+        if ( grade > 0 && grade < 4) {
+            result = "Initial";
+        } else if ( grade > 3 && grade < 7) {
+            result = "Average";
+        } else if ( grade > 6 && grade < 10) {
+            result = "Sufficient";
+        } else if ( grade > 9 && grade < 13) {
+            result = "High";
+        }
+        return result;
     }
 
     /* https://www.e-olymp.com/en/problems/923
@@ -25,7 +36,17 @@ public class Task {
         For spring months print Spring, for summer - Summer, for autumn - Autumn and for winter - Winter.
      */
     public String season(int month) {
-        return null;
+        String result = "";
+        if ( month > 0 && month < 3 || month == 12) {
+            result = "Winter";
+        } else if ( month > 2 && month < 6) {
+            result = "Spring";
+        } else if ( month > 5 && month < 9) {
+            result = "Summer";
+        } else if ( month > 8 && month < 12) {
+            result = "Autumn";
+        }
+        return result;
     }
 
     /* https://www.e-olymp.com/en/problems/107
@@ -38,7 +59,14 @@ public class Task {
         Print the minimal sum to buy n disсs.
  */
     public int compactDiscs(int numberOfDiscs) {
-        return 0;
+        int result = 0;
+        int multiHund = numberOfDiscs / 100;
+        result = multiHund * 100;
+        int multiTwenty = numberOfDiscs % 100 / 20;
+        result += multiTwenty * 30;
+        int multiSingle = numberOfDiscs % 20;
+        result += multiSingle * 2;
+        return result;
     }
 
     /* https://www.e-olymp.com/en/problems/918
@@ -52,7 +80,17 @@ public class Task {
         The singular is the number of a corresponding quarter, or 0 if unequivocally define a quarter it is impossible.
      */
     public int whichQuarter(int x, int y) {
-        return 0;
+        int quarter = 0;
+        if ( x > 0 && y > 0) {
+            quarter = 1;
+        } else if ( x < 0 && y > 0) {
+            quarter = 2;
+        } else if ( x < 0 && y < 0) {
+            quarter = 3;
+        } else if ( x > 0 && y < 0) {
+            quarter = 4;
+        }
+        return quarter;
     }
 
     /*https://www.e-olymp.com/en/problems/903
@@ -66,7 +104,17 @@ public class Task {
         Print the bigger digit between first and last. In case of equality, print "=" (without quotes).
     */
     public String firstOrLast(int number) {
-        return null;
+        String myStringNumber = String.valueOf(number);
+        String result = "=";
+        char firstNumber = myStringNumber.charAt(0);
+        char lastNumber = myStringNumber.charAt(myStringNumber.length() - 1);
+
+        if (firstNumber > lastNumber) {
+            result = String.valueOf(firstNumber);
+        } else if (firstNumber < lastNumber) {
+            result = String.valueOf(lastNumber);
+        }
+        return result;
     }
 
     /*https://www.e-olymp.com/en/problems/108
@@ -80,7 +128,10 @@ public class Task {
         Print the median among three numbers.
      */
     public int medianNumber(int a, int b, int c) {
-        return 0;
+        int allDigits[] = {a,b,c};
+        Arrays.sort(allDigits);
+
+        return allDigits[1];
     }
 
     /*https://www.e-olymp.com/en/problems/906
@@ -93,8 +144,23 @@ public class Task {
     Output
         Print the product of digits in n.
      */
+    public int productOfDigits2(int digit) {
+        String myDigitString = String.valueOf(digit);
+        String[] strArray = new String[myDigitString.length()];
+        int result = 1;
+        for (int i = 0; i < strArray.length ; i++) {
+            strArray[i] = String.valueOf(myDigitString.charAt(i));
+            result *= Integer.parseInt(strArray[i]);
+        }
+        return result;
+    }
     public int productOfDigits(int digit) {
-        return 0;
+        int result = 1;
+        while (digit > 1) {
+            result *= digit % 10;
+            digit /= 10;
+        }
+        return result;
     }
 
     /*https://www.e-olymp.com/en/problems/2
@@ -108,6 +174,7 @@ public class Task {
         Print the number of digits in number n.
      */
     public int numberOfDigits(int digit) {
-        return 0;
+        String myDigitString = String.valueOf(digit);
+        return myDigitString.length();
     }
 }
